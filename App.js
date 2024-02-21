@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   const [isTitle, setIsTitle] = useState(false);
@@ -9,10 +8,16 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={{
+          uri: "https://reactnative.dev/img/tiny_logo.png",
+        }}
+      />
       <Text>Testing App V1</Text>
       <Text>Hello</Text>
-      <Button title="Press Me" onPress={() => handlePress()}></Button>
-      <Text>{isTitle && "Pressed"}</Text>
+      <Button title="Press Me" onPress={handlePress}></Button>
+      <Text style={{ color: "red" }}>{isTitle && "Pressed!"}</Text>
     </View>
   );
 }
@@ -23,5 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    gap: 5,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    margin: 30,
   },
 });
